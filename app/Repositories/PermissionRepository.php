@@ -3,28 +3,28 @@
 namespace App\Repositories;
 
 use App\Interfaces\PermissionRepositoryInterface;
-
+use Spatie\Permission\Models\Permission;
 
 class PermissionRepository implements PermissionRepositoryInterface 
 {
-    public function BrowsePermission() {
+    public function browsePermission() {
 
     }
-    
-    public function ReadPermission() {
+
+    public function readPermission() {
 
     }
-    
-    public function EditPermission() {
+
+    public function editPermission($permissionModel, $permissionData) {
 
     }
-    
-    public function AddPermission() {
+
+    public function addPermission($permissionData) {
 
     }
-    
-    public function DeletePermission() {
+
+    public function deletePermission($permissionModel) {
 
     }
-    
+
 }

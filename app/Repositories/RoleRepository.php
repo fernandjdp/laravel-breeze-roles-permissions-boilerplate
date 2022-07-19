@@ -3,27 +3,27 @@
 namespace App\Repositories;
 
 use App\Interfaces\RoleRepositoryInterface;
-
+use Spatie\Permission\Models\Role;
 
 class RoleRepository implements RoleRepositoryInterface 
 {
-    public function BrowseRole() {
+    public function browseRole() {
+        return Role::all()->toArray();
+    }
+    
+    public function readRole() {
 
     }
     
-    public function ReadRole() {
+    public function editRole() {
 
     }
     
-    public function EditRole() {
+    public function addRole() {
 
     }
     
-    public function AddRole() {
-
-    }
-    
-    public function DeleteRole() {
+    public function deleteRole() {
 
     }
     

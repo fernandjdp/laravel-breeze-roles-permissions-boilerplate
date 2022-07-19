@@ -4,9 +4,9 @@ namespace App\Interfaces;
 
 interface PermissionRepositoryInterface 
 {
-    public function BrowsePermission();
-    public function ReadPermission();
-    public function EditPermission();
-    public function AddPermission();
-    public function DeletePermission();
+    public function browsePermission();
+    public function readPermission();
+    public function editPermission($permissionModel, $permissionData);
+    public function addPermission($permissionData);
+    public function deletePermission($permissionModel);
 }
