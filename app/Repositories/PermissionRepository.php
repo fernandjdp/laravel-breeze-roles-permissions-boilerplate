@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Permission;
 class PermissionRepository implements PermissionRepositoryInterface 
 {
     public function browsePermission() {
-
+        return Permission::all()->toArray();
     }
 
     public function readPermission() {

@@ -18,5 +18,8 @@
         "tailwindcss": "^2.0.4",
         "vite": "^2.9.11",
         "vue": "^3.2.31"
+    },
+    "dependencies": {
+        "@heroicons/vue": "^1.0.6"
     }
 }

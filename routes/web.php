@@ -25,6 +25,7 @@ Route::get('/', function () {
 });
 
 Route::resource('permissions', PermissionController::class);
+Route::resource('roles', RoleController::class);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

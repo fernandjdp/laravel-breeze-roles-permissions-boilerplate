@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Interfaces\PermissionRepositoryInterface;
 use App\Http\Requests\PermissionRequest;
 use Spatie\Permission\Models\Permission;
+use Inertia\Inertia;
 
 class PermissionController extends Controller
 {
@@ -27,7 +27,10 @@ class PermissionController extends Controller
     public function index()
     {
         $permissionList = $this->permissionRepository->browsePermission();
-        return response()->json($permissionList);
+   
+        return Inertia::render('Permissions/Index', [
+            'items' => $permissionList
+        ]);
     }
 
     /**
