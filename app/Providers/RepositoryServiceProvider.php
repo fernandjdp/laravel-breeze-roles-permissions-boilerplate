@@ -7,6 +7,8 @@ use App\Interfaces\PermissionRepositoryInterface;
 use App\Repositories\PermissionRepository;
 use App\Interfaces\RoleRepositoryInterface;
 use App\Repositories\RoleRepository;
+use App\Interfaces\DummyModelRepositoryInterface;
+use App\Repositories\DummyModelRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(PermissionRepositoryInterface::class, PermissionRepository::class);
         $this->app->bind(RoleRepositoryInterface::class, RoleRepository::class);
+        $this->app->bind(DummyModelRepositoryInterface::class, DummyModelRepository::class);
     }
 
     /**
