@@ -4,9 +4,9 @@ namespace App\Interfaces;
 
 interface RoleRepositoryInterface 
 {
-    public function BrowseRole();
-    public function ReadRole();
-    public function EditRole();
-    public function AddRole();
-    public function DeleteRole();
+    public function browseRole();
+    public function readRole();
+    public function editRole();
+    public function addRole();
+    public function deleteRole();
 }
