@@ -6,6 +6,8 @@ use App\Interfaces\PermissionRepositoryInterface;
 use App\Http\Requests\PermissionRequest;
 use Spatie\Permission\Models\Permission;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Redirect;
 
 class PermissionController extends Controller
 {
@@ -29,7 +31,8 @@ class PermissionController extends Controller
         $permissionList = $this->permissionRepository->browsePermission();
    
         return Inertia::render('Permissions/Index', [
-            'items' => $permissionList
+            'items' => $permissionList,
+            'create_url' => URL::route('permissions.create'),
         ]);
     }
 
@@ -40,7 +43,9 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        // Inertia Component
+        return Inertia::render('Permissions/CreateAndUpdate', [
+            'method' => 'create'
+        ]);
     }
 
     /**
@@ -51,8 +56,8 @@ class PermissionController extends Controller
      */
     public function store(PermissionRequest $request)
     {
-        $createdPermission = $this->permissionRepository->addPermission($request);
-        return response()->json($createdPermission);
+        $this->permissionRepository->addPermission($request->validated());
+        return Redirect::route('permissions.index');
     }
 
     /**
@@ -69,12 +74,15 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * \Spatie\Permission\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
-        // Inertia Component
+        return Inertia::render('Permissions/CreateAndUpdate', [
+            'permission' => $permission,
+            'method' => 'edit'
+        ]);
     }
 
     /**
@@ -86,8 +94,8 @@ class PermissionController extends Controller
      */
     public function update(PermissionRequest $request, Permission $permission)
     {
-        $updatedPermission = $this->permissionRepository->editPermission($permission, $request);
-        return response()->json($updatedPermission);
+        $updatedPermission = $this->permissionRepository->editPermission($permission, $request->validated());
+        return Redirect::route('permissions.index');
     }
 
     /**
@@ -99,6 +107,6 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         $deletedPermission = $this->permissionRepository->deletePermission($permission);
-        return response()->json($deletedPermission);
+        return Redirect::route('permissions.index');
     }
 }

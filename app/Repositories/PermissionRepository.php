@@ -16,15 +16,15 @@ class PermissionRepository implements PermissionRepositoryInterface
     }
 
     public function editPermission($permissionModel, $permissionData) {
-
+        return $permissionModel->update($permissionData);
     }
 
     public function addPermission($permissionData) {
-
+        return Permission::create($permissionData);
     }
 
     public function deletePermission($permissionModel) {
-
+        return $permissionModel->delete();
     }
 
 }
