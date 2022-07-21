@@ -106,7 +106,6 @@ export default {
         },
         loadFormInfo() {
             if (this.$attrs.item) {
-
                 //Im sure there is a better way to do this
                 this.form.name = this.$attrs.item.name
                 this.form.description = this.$attrs.item.description

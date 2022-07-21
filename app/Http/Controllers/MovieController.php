@@ -21,6 +21,7 @@ class MovieController extends Controller
     {
         $this->movieRepository = $movieRepository;
     } 
+    
     /**
      * Display a listing of the resource.
      *

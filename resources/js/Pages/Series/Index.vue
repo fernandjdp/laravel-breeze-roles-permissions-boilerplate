@@ -11,7 +11,7 @@ import { Link } from '@inertiajs/inertia-vue3'
     <BreezeAuthenticatedLayout>
         <template #header>
             <h2 class="flex justify-between font-semibold text-xl text-gray-800 leading-tight">
-                Books
+                Series
                 <button type="button" class="text-white text-sm bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg  px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="goToCreate">New</button>
             </h2>
         </template>
@@ -20,7 +20,7 @@ import { Link } from '@inertiajs/inertia-vue3'
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                        Books CRUD
+                        Series CRUD
                     </div>
                 </div>
             </div>
