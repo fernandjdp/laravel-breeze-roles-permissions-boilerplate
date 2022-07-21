@@ -61,10 +61,10 @@ import { Link } from '@inertiajs/inertia-vue3'
                 this.$inertia.get(this.$attrs.create_url)
             },
             deletePermission(itemId) {
-                this.$inertia.delete(route('permissions.destroy', itemId))
+                this.$inertia.delete(route(`${this.$attrs.modelName}.destroy`, itemId))
             },
             updatePermission(itemId) {
-                this.$inertia.get(route('permissions.edit', itemId))
+                this.$inertia.get(route(`${this.$attrs.modelName}.edit`, itemId))
             }
         },
     };

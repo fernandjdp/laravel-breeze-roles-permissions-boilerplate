@@ -34,6 +34,7 @@ class BookController extends Controller
         return Inertia::render('Books/Index', [
             'items' => $bookList,
             'create_url' => URL::route('books.create'),
+            'modelName' => 'books'
         ]);
     }
 
@@ -45,7 +46,8 @@ class BookController extends Controller
     public function create()
     {
         return Inertia::render('Books/CreateAndUpdate', [
-            'method' => 'create'
+            'method' => 'create',
+            'modelName' => 'books'
         ]);
     }
 
@@ -81,8 +83,9 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         return Inertia::render('Books/CreateAndUpdate', [
-            'book' => $book,
-            'method' => 'edit'
+            'item' => $book,
+            'method' => 'edit',
+            'modelName' => 'books'
         ]);
     }
 
@@ -95,7 +98,7 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        $updatedBook = $this->bookRepository->editPermission($book, $request->validated());
+        $updatedBook = $this->bookRepository->editBook($book, $request->validated());
         return Redirect::route('books.index');
     }
 
@@ -107,7 +110,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        $deletedBook = $this->bookRepository->deletePermission($book);
+        $deletedBook = $this->bookRepository->deleteBook($book);
         return Redirect::route('books.index');
     }
 }
