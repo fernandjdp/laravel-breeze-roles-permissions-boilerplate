@@ -56,7 +56,7 @@ export default {
             <tbody>
                 <tr v-for="item in items" :key="item.id" class="bg-white border-b hover:bg-gray-50">
                     <th v-for="column in columns" :key="column.id" scope="row" class="px-6 py-4 font-medium max-w-md text-gray-900 whitespace-nowrap">
-                        <div>
+                        <div class="truncate">
                             {{ item[column.reference]}}
                         </div>
                     </th>

@@ -43,6 +43,25 @@ const showingNavigationDropdown = ref(false);
                                     Roles
                                 </BreezeNavLink>
                             </div>
+                            
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <BreezeNavLink :href="route('books.index')" :active="route().current('books.index')">
+                                    Books
+                                </BreezeNavLink>
+                            </div>
+
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <BreezeNavLink :href="route('movies.index')" :active="route().current('movies.index')">
+                                    Movies
+                                </BreezeNavLink>
+                            </div>
+
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <BreezeNavLink :href="route('series.index')" :active="route().current('series.index')">
+                                    Series
+                                </BreezeNavLink>
+                            </div>
+
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

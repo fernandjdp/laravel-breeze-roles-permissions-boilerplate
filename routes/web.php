@@ -30,6 +30,7 @@ Route::get('/', function () {
 
 Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
+
 Route::resource('series', SerieController::class);
 Route::resource('books', BookController::class);
 Route::resource('movies', MovieController::class);
