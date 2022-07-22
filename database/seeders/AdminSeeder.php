@@ -23,7 +23,7 @@ class AdminSeeder extends Seeder
 
         $user = User::updateOrCreate(['name' => 'Admin'],[
             'name' => 'Admin',
-            'email' => 'dev@broota.com',
+            'email' => 'admin@test.com',
             'password' => Hash::make($password),
             'email_verified_at' => Carbon::now()->toDateTimeString()
         ]);
