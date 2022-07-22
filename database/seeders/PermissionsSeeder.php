@@ -43,14 +43,14 @@ class PermissionsSeeder extends Seeder
 
             if (!$permissionExists) {
                 Permission::insert([
-                    ['name' => $modelName.'.*', 'guard_name' => 'api'],
-                    ['name' => $modelName.'.viewAny', 'guard_name' => 'api'],
-                    ['name' => $modelName.'.view', 'guard_name' => 'api'],
-                    ['name' => $modelName.'.create', 'guard_name' => 'api'],
-                    ['name' => $modelName.'.update', 'guard_name' => 'api'],
-                    ['name' => $modelName.'.delete', 'guard_name' => 'api'],
-                    ['name' => $modelName.'.restore', 'guard_name' => 'api'],
-                    ['name' => $modelName.'.forceDelete', 'guard_name' => 'api']
+                    ['name' => $modelName.'.*', 'guard_name' => 'web'],
+                    ['name' => $modelName.'.viewAny', 'guard_name' => 'web'],
+                    ['name' => $modelName.'.view', 'guard_name' => 'web'],
+                    ['name' => $modelName.'.create', 'guard_name' => 'web'],
+                    ['name' => $modelName.'.update', 'guard_name' => 'web'],
+                    ['name' => $modelName.'.delete', 'guard_name' => 'web'],
+                    ['name' => $modelName.'.restore', 'guard_name' => 'web'],
+                    ['name' => $modelName.'.forceDelete', 'guard_name' => 'web']
                 ]);
             }
         }
@@ -70,22 +70,22 @@ class PermissionsSeeder extends Seeder
                                            ->count() > 0);
         if (!$adminRelatedPermissionsExists) {
             Permission::insert([
-                ['name' => 'roles.*', 'guard_name' => 'api'],
-                ['name' => 'roles.viewAny', 'guard_name' => 'api'],
-                ['name' => 'roles.view', 'guard_name' => 'api'],
-                ['name' => 'roles.create', 'guard_name' => 'api'],
-                ['name' => 'roles.update', 'guard_name' => 'api'],
-                ['name' => 'roles.delete', 'guard_name' => 'api'],
-                ['name' => 'roles.restore', 'guard_name' => 'api'],
-                ['name' => 'roles.forceDelete', 'guard_name' => 'api'],
-                ['name' => 'permissions.*', 'guard_name' => 'api'],
-                ['name' => 'permissions.viewAny', 'guard_name' => 'api'],
-                ['name' => 'permissions.view', 'guard_name' => 'api'],
-                ['name' => 'permissions.create', 'guard_name' => 'api'],
-                ['name' => 'permissions.update', 'guard_name' => 'api'],
-                ['name' => 'permissions.delete', 'guard_name' => 'api'],
-                ['name' => 'permissions.restore', 'guard_name' => 'api'],
-                ['name' => 'permissions.forceDelete', 'guard_name' => 'api']
+                ['name' => 'roles.*', 'guard_name' => 'web'],
+                ['name' => 'roles.viewAny', 'guard_name' => 'web'],
+                ['name' => 'roles.view', 'guard_name' => 'web'],
+                ['name' => 'roles.create', 'guard_name' => 'web'],
+                ['name' => 'roles.update', 'guard_name' => 'web'],
+                ['name' => 'roles.delete', 'guard_name' => 'web'],
+                ['name' => 'roles.restore', 'guard_name' => 'web'],
+                ['name' => 'roles.forceDelete', 'guard_name' => 'web'],
+                ['name' => 'permissions.*', 'guard_name' => 'web'],
+                ['name' => 'permissions.viewAny', 'guard_name' => 'web'],
+                ['name' => 'permissions.view', 'guard_name' => 'web'],
+                ['name' => 'permissions.create', 'guard_name' => 'web'],
+                ['name' => 'permissions.update', 'guard_name' => 'web'],
+                ['name' => 'permissions.delete', 'guard_name' => 'web'],
+                ['name' => 'permissions.restore', 'guard_name' => 'web'],
+                ['name' => 'permissions.forceDelete', 'guard_name' => 'web']
                 
             ]);
         }
@@ -101,7 +101,7 @@ class PermissionsSeeder extends Seeder
     private function createSuperAdminPermission() {
         Role::firstOrCreate([
             'name' => 'superadmin',
-            'guard_name' => 'api'
+            'guard_name' => 'web'
         ]);
 
         return var_dump('Superadmin role creted successfully');
