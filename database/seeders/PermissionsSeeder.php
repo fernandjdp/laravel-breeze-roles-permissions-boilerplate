@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\Backoffice;
+namespace Database\Seeders;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -43,14 +43,14 @@ class PermissionsSeeder extends Seeder
 
             if (!$permissionExists) {
                 Permission::insert([
-                    ['name' => $modelName.'.*', 'guardName' => 'api'],
-                    ['name' => $modelName.'.viewAny', 'guardName' => 'api'],
-                    ['name' => $modelName.'.view', 'guardName' => 'api'],
-                    ['name' => $modelName.'.create', 'guardName' => 'api'],
-                    ['name' => $modelName.'.update', 'guardName' => 'api'],
-                    ['name' => $modelName.'.delete', 'guardName' => 'api'],
-                    ['name' => $modelName.'.restore', 'guardName' => 'api'],
-                    ['name' => $modelName.'.forceDelete', 'guardName' => 'api']
+                    ['name' => $modelName.'.*', 'guard_name' => 'api'],
+                    ['name' => $modelName.'.viewAny', 'guard_name' => 'api'],
+                    ['name' => $modelName.'.view', 'guard_name' => 'api'],
+                    ['name' => $modelName.'.create', 'guard_name' => 'api'],
+                    ['name' => $modelName.'.update', 'guard_name' => 'api'],
+                    ['name' => $modelName.'.delete', 'guard_name' => 'api'],
+                    ['name' => $modelName.'.restore', 'guard_name' => 'api'],
+                    ['name' => $modelName.'.forceDelete', 'guard_name' => 'api']
                 ]);
             }
         }
@@ -70,22 +70,22 @@ class PermissionsSeeder extends Seeder
                                            ->count() > 0);
         if (!$adminRelatedPermissionsExists) {
             Permission::insert([
-                ['name' => 'roles.*', 'guardName' => 'api'],
-                ['name' => 'roles.viewAny', 'guardName' => 'api'],
-                ['name' => 'roles.view', 'guardName' => 'api'],
-                ['name' => 'roles.create', 'guardName' => 'api'],
-                ['name' => 'roles.update', 'guardName' => 'api'],
-                ['name' => 'roles.delete', 'guardName' => 'api'],
-                ['name' => 'roles.restore', 'guardName' => 'api'],
-                ['name' => 'roles.forceDelete', 'guardName' => 'api'],
-                ['name' => 'permissions.*', 'guardName' => 'api'],
-                ['name' => 'permissions.viewAny', 'guardName' => 'api'],
-                ['name' => 'permissions.view', 'guardName' => 'api'],
-                ['name' => 'permissions.create', 'guardName' => 'api'],
-                ['name' => 'permissions.update', 'guardName' => 'api'],
-                ['name' => 'permissions.delete', 'guardName' => 'api'],
-                ['name' => 'permissions.restore', 'guardName' => 'api'],
-                ['name' => 'permissions.forceDelete', 'guardName' => 'api']
+                ['name' => 'roles.*', 'guard_name' => 'api'],
+                ['name' => 'roles.viewAny', 'guard_name' => 'api'],
+                ['name' => 'roles.view', 'guard_name' => 'api'],
+                ['name' => 'roles.create', 'guard_name' => 'api'],
+                ['name' => 'roles.update', 'guard_name' => 'api'],
+                ['name' => 'roles.delete', 'guard_name' => 'api'],
+                ['name' => 'roles.restore', 'guard_name' => 'api'],
+                ['name' => 'roles.forceDelete', 'guard_name' => 'api'],
+                ['name' => 'permissions.*', 'guard_name' => 'api'],
+                ['name' => 'permissions.viewAny', 'guard_name' => 'api'],
+                ['name' => 'permissions.view', 'guard_name' => 'api'],
+                ['name' => 'permissions.create', 'guard_name' => 'api'],
+                ['name' => 'permissions.update', 'guard_name' => 'api'],
+                ['name' => 'permissions.delete', 'guard_name' => 'api'],
+                ['name' => 'permissions.restore', 'guard_name' => 'api'],
+                ['name' => 'permissions.forceDelete', 'guard_name' => 'api']
                 
             ]);
         }
@@ -101,7 +101,7 @@ class PermissionsSeeder extends Seeder
     private function createSuperAdminPermission() {
         Role::firstOrCreate([
             'name' => 'superadmin',
-            'guardName' => 'api'
+            'guard_name' => 'api'
         ]);
 
         return var_dump('Superadmin role creted successfully');
