@@ -19,6 +19,7 @@ class BookController extends Controller
      */
     public function __construct(DummyModelRepositoryInterface $bookRepository)
     {
+        $this->authorizeResource(Book::class);
         $this->bookRepository = $bookRepository;
     }
 
