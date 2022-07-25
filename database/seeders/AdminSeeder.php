@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\Backoffice;
+namespace Database\Seeders;
 
 use Carbon\Carbon;
 use App\Models\User;
