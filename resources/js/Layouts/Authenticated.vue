@@ -31,31 +31,31 @@ const showingNavigationDropdown = ref(false);
                                 </BreezeNavLink>
                             </div>
 
-                            <div v-show="$can('permissions', '*')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-show="$can('permissions', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <BreezeNavLink :href="route('permissions.index')" :active="route().current('permissions.index')">
                                     Permissions
                                 </BreezeNavLink>
                             </div>
 
-                            <div v-show="$can('roles', '*')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-show="$can('roles', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <BreezeNavLink :href="route('roles.index')" :active="route().current('roles.index')">
                                     Roles
                                 </BreezeNavLink>
                             </div>
                             
-                            <div v-show="$can('books', '*')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-show="$can('books', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <BreezeNavLink :href="route('books.index')" :active="route().current('books.index')">
                                     Books
                                 </BreezeNavLink>
                             </div>
 
-                            <div v-show="$can('movies', '*')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-show="$can('movies', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <BreezeNavLink :href="route('movies.index')" :active="route().current('movies.index')">
                                     Movies
                                 </BreezeNavLink>
                             </div>
 
-                            <div v-show="$can('series', '*')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-show="$can('series', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <BreezeNavLink :href="route('series.index')" :active="route().current('series.index')">
                                     Series
                                 </BreezeNavLink>
