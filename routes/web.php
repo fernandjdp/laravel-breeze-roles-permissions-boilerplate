@@ -8,6 +8,9 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +37,8 @@ Route::resource('roles', RoleController::class);
 Route::resource('series', SerieController::class);
 Route::resource('books', BookController::class);
 Route::resource('movies', MovieController::class);
+
+Route::resource('users', UserController::class);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

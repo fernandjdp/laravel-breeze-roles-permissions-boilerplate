@@ -18,7 +18,7 @@ class SeriePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('series.viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class SeriePolicy
      */
     public function view(User $user, Serie $serie)
     {
-        //
+        return $user->can('series.view');
     }
 
     /**
@@ -41,7 +41,7 @@ class SeriePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('series.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class SeriePolicy
      */
     public function update(User $user, Serie $serie)
     {
-        //
+        return $user->can('series.update');
     }
 
     /**
@@ -65,7 +65,7 @@ class SeriePolicy
      */
     public function delete(User $user, Serie $serie)
     {
-        //
+        return $user->can('series.delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class SeriePolicy
      */
     public function restore(User $user, Serie $serie)
     {
-        //
+        return $user->can('series.restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class SeriePolicy
      */
     public function forceDelete(User $user, Serie $serie)
     {
-        //
+        return $user->can('series.forceDelete');
     }
 }

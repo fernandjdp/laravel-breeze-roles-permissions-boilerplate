@@ -18,7 +18,7 @@ class MoviePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('movies.viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class MoviePolicy
      */
     public function view(User $user, Movie $movie)
     {
-        //
+        return $user->can('movies.view');
     }
 
     /**
@@ -41,7 +41,7 @@ class MoviePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('movies.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class MoviePolicy
      */
     public function update(User $user, Movie $movie)
     {
-        //
+        return $user->can('movies.update');
     }
 
     /**
@@ -65,7 +65,7 @@ class MoviePolicy
      */
     public function delete(User $user, Movie $movie)
     {
-        //
+        return $user->can('movies.delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class MoviePolicy
      */
     public function restore(User $user, Movie $movie)
     {
-        //
+        return $user->can('movies.restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class MoviePolicy
      */
     public function forceDelete(User $user, Movie $movie)
     {
-        //
+        return $user->can('movies.forceDelete');
     }
 }

@@ -31,6 +31,12 @@ const showingNavigationDropdown = ref(false);
                                 </BreezeNavLink>
                             </div>
 
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <BreezeNavLink :href="route('users.index')" :active="route().current('users.index')">
+                                    Users
+                                </BreezeNavLink>
+                            </div>
+
                             <div v-show="$can('permissions', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <BreezeNavLink :href="route('permissions.index')" :active="route().current('permissions.index')">
                                     Permissions

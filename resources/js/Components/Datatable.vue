@@ -12,6 +12,10 @@ export default {
             type: Array,
             required: true
         },
+        modelName: {
+            type: String,
+            required: true
+        },
         deleteMethod: {
             type: Function,
             required: false
@@ -61,10 +65,10 @@ export default {
                         </div>
                     </th>
                     <td class="px-6 py-4 text-center">
-                        <button @click="clickUpdateButton(item.id)" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
+                        <button v-show="$can(modelName, 'update')" @click="clickUpdateButton(item.id)" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
                             <PencilIcon class="w-4 h-4"></PencilIcon>
                         </button>
-                        <button @click="clickDeleteButton(item.id)" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
+                        <button v-show="$can(modelName, 'delete')" @click="clickDeleteButton(item.id)" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
                             <TrashIcon class="w-4 h-4"></TrashIcon>
                         </button>
                     </td>

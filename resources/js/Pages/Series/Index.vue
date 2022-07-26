@@ -35,6 +35,7 @@ import { Link } from '@inertiajs/inertia-vue3'
                     :columns="columns"
                     :delete-method="deletePermission"
                     :update-method="updatePermission"
+                    :modelName="$attrs.modelName"
                     ></Datatable>
                 </div>
             </div>
