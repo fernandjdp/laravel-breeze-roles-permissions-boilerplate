@@ -114,4 +114,11 @@ class UserController extends Controller
         $deletedUser = $this->userRepository->deleteUser($user);
         return Redirect::route('users.index');
     }
+
+    public function assignPermissions(User $user)
+    {
+        return Inertia::render('Users/AssignPermissions', [
+            'user' => $user,
+        ]);
+    }
 }

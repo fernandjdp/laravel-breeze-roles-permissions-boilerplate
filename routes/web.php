@@ -40,6 +40,8 @@ Route::resource('movies', MovieController::class);
 
 Route::resource('users', UserController::class);
 
+Route::get('/users/{user}/permissions', [UserController::class, 'assignPermissions'])->name('users.permission');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

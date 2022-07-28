@@ -36,7 +36,13 @@ import { Link } from '@inertiajs/inertia-vue3'
                     :delete-method="deletePermission"
                     :update-method="updatePermission"
                     :modelName="$attrs.modelName"
-                    ></Datatable>
+                    >
+                    <template #button="buttonProps">
+                        <button @click="goToAssignPermissions(buttonProps.id)" type="button" class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
+                            <UserCircleIcon class="w-4 h-4"></UserCircleIcon>
+                        </button>
+                    </template>
+                    </Datatable>
                 </div>
             </div>
         </div>
@@ -45,6 +51,7 @@ import { Link } from '@inertiajs/inertia-vue3'
 </template>
 
 <script>
+import { UserCircleIcon } from "@heroicons/vue/outline";
     export default {
         data(){
             return {
@@ -66,6 +73,9 @@ import { Link } from '@inertiajs/inertia-vue3'
             },
             updatePermission(itemId) {
                 this.$inertia.get(route(`${this.$attrs.modelName}.edit`, itemId))
+            },
+            goToAssignPermissions(itemId) {
+                this.$inertia.get(route(`users.permission`, itemId))
             }
         },
     };

@@ -71,6 +71,7 @@ export default {
                         <button v-show="$can(modelName, 'delete')" @click="clickDeleteButton(item.id)" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
                             <TrashIcon class="w-4 h-4"></TrashIcon>
                         </button>
+                        <slot name="button" :id="item.id"></slot>
                     </td>
                 </tr>
             </tbody>
