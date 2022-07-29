@@ -6,7 +6,9 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Interfaces\UserRepositoryInterface;
+use App\Interfaces\PermissionRepositoryInterface;
 use Inertia\Inertia;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Redirect;
 
@@ -18,10 +20,11 @@ class UserController extends Controller
      *
      * @return void
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository, PermissionRepositoryInterface $permissionRepository)
     {
         $this->authorizeResource(User::class);
         $this->userRepository = $userRepository;
+        $this->permissionRepository = $permissionRepository;
     }
     /**
      * Display a listing of the resource.
@@ -119,6 +122,7 @@ class UserController extends Controller
     {
         return Inertia::render('Users/AssignPermissions', [
             'user' => $user,
+            'permissions' => $this->permissionRepository->browsePermissionByWildcard()
         ]);
     }
 }

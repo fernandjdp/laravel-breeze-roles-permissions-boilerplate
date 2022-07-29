@@ -6,6 +6,7 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+import { plugin as Slicksort } from 'vue-slicksort';
 import  canPlugin from '@/plugins/can';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
@@ -20,6 +21,7 @@ createInertiaApp({
         .use(plugin)
         .use(ZiggyVue, Ziggy)
         .use(canPlugin)
+        .use(Slicksort)
         .mount(el);
     },
 });
