@@ -118,6 +118,13 @@ class UserController extends Controller
         return Redirect::route('users.index');
     }
 
+    /**
+     * It returns a view with the user and the permissions
+     * 
+     * @param User user The user object that we're assigning permissions to.
+     * 
+     * @return A view with the user and permissions.
+     */
     public function assignPermissions(User $user)
     {
         return Inertia::render('Users/AssignPermissions', [

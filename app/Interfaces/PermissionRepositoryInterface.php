@@ -10,4 +10,5 @@ interface PermissionRepositoryInterface
     public function editPermission($permissionModel, $permissionData);
     public function addPermission($permissionData);
     public function deletePermission($permissionModel);
+    public function assignPermissions($permissionData, $user);
 }

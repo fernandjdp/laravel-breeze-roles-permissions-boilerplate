@@ -51,4 +51,19 @@ class PermissionRepository implements PermissionRepositoryInterface
         return $permissionModel->delete();
     }
 
+    //Honestly I overcomplicated this method. Refactor this ASAP
+    public function assignPermissions($permissionData, $user) {
+        $permissionsArray = [];
+
+        //This nested foreach sucks
+        foreach ($permissionData as $model) {
+            foreach ($model as $index => $wildcards) {
+                foreach ($wildcards as $key => $wildcardName) {
+                    array_push($permissionsArray, "{$index}.{$wildcardName}");
+                }
+            }
+        }
+        return $user->syncPermissions($permissionsArray);
+    }
+
 }

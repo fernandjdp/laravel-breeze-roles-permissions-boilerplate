@@ -38,7 +38,7 @@ import { Link } from '@inertiajs/inertia-vue3'
                     :modelName="$attrs.modelName"
                     >
                     <template #button="buttonProps">
-                        <button @click="goToAssignPermissions(buttonProps.id)" type="button" class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
+                        <button v-show="$can('permissions', 'viewAny')" @click="goToAssignPermissions(buttonProps.id)" type="button" class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
                             <UserCircleIcon class="w-4 h-4"></UserCircleIcon>
                         </button>
                     </template>

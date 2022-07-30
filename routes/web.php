@@ -41,6 +41,7 @@ Route::resource('movies', MovieController::class);
 Route::resource('users', UserController::class);
 
 Route::get('/users/{user}/permissions', [UserController::class, 'assignPermissions'])->name('users.permission');
+Route::post('/users/{user}/permissions', [PermissionController::class, 'assignPermissions'])->name('permissions.user');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

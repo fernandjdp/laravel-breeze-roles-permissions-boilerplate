@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Interfaces\PermissionRepositoryInterface;
 use App\Http\Requests\PermissionRequest;
+use App\Http\Requests\AssignPermissionsRequest;
 use Spatie\Permission\Models\Permission;
 use Inertia\Inertia;
+use App\Models\User;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Redirect;
 
@@ -108,5 +110,11 @@ class PermissionController extends Controller
     {
         $deletedPermission = $this->permissionRepository->deletePermission($permission);
         return Redirect::route('permissions.index');
+    }
+
+    public function assignPermissions(AssignPermissionsRequest $request, User $user)
+    {
+        $permissionsAssigned = $this->permissionRepository->assignPermissions($request->validated()['permissionList'], $user);
+        return Redirect::route('users.index');
     }
 }
