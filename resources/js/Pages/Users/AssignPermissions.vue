@@ -43,13 +43,11 @@
                                         <h5
                                             class="capitalize mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white"
                                         >
-                                            {{ Object.keys(permission)[0] }}
+                                            {{ permission }}
                                         </h5>
                                         <div class="grid grid-cols-3">
                                             <fieldset
-                                                v-for="wildcard in permission[
-                                                    Object.keys(permission)[0]
-                                                ]"
+                                                v-for="wildcard in wildcards"
                                                 :key="wildcard"
                                             >
                                                 <div
@@ -58,9 +56,7 @@
                                                     <input
                                                         @click="
                                                             assignPermission(
-                                                                Object.keys(
-                                                                    permission
-                                                                )[0],
+                                                                permission,
                                                                 wildcard,
                                                                 $event.target
                                                                     .checked
@@ -75,7 +71,7 @@
                                                         for="checkbox-1"
                                                         class="capitalize ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                                                     >
-                                                        {{ wildcard }}
+                                                        {{ wildcard != '*' ? wildcard : 'All' }}
                                                     </label>
                                                 </div>
                                             </fieldset>
@@ -90,13 +86,13 @@
                             <SlickList
                                 @sort-insert="unassignPermission"
                                 axis="y"
-                                v-model:list="permissions"
+                                v-model:list="permissionsList"
                                 class="overflow-auto max-h-screen"
                                 group="a"
                                 :accept="['b']"
                             >
                                 <SlickItem
-                                    v-for="(permission, i) in permissions"
+                                    v-for="(permission, i) in permissionsList"
                                     :key="permission"
                                     :index="i"
                                     class=""
@@ -109,7 +105,7 @@
                                         <h5
                                             class="capitalize mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white"
                                         >
-                                            {{ Object.keys(permission)[0] }}
+                                            {{ permission }}
                                         </h5>
                                     </a>
                                 </SlickItem>
@@ -144,23 +140,31 @@ export default {
     },
     mounted() {
         this.loadPermissionsList();
+        this.loadWildcardsNames();
     },
     data() {
         return {
-            permissions: [],
+            permissionsList: [],
             permissionsAssigned: [],
             permissionsSelected: [],
+            wildcards: []
         };
     },
     methods: {
+        loadWildcardsNames() {
+            this.wildcards = this.$attrs.permissions.map(function (element){return element.name.split('.')[1]})
+                                             .filter(function (value, index, self){return self.indexOf(value) === index})
+        },
         storeUserPermissions() {
             this.form.permissionList = this.permissionsSelected
             this.form.post(route(`permissions.user`, this.$attrs.user.id), {forceFormData: true})
         },
         loadPermissionsList() {
-            this.permissions = this.$attrs.permissions;
+            this.permissionsList = this.$attrs.permissions.map(function (element){return element.name.split('.')[0]})
+                                   .filter(function (value, index, self){return self.indexOf(value) === index});
         },
         assignPermission(model, wildcard, bool) {
+
             if (bool) {
                 this.addPermission(model, wildcard);
             } else {
@@ -168,36 +172,19 @@ export default {
             }
         },
         addPermission(model, wildcard) {
-            let index = this.permissionsSelected.findIndex((e) =>
-                e.hasOwnProperty(model)
-            );
-            if (index != -1) {
-                console.log("Ya existe", index);
-                this.permissionsSelected[index][model].push(wildcard);
-            } else {
-                console.log("No existe ya lo creo");
-                this.permissionsSelected.push({ [model]: [wildcard] });
-            }
+            this.permissionsSelected.push(`${model}.${wildcard}`)
         },
         deletePermission(model, wildcard) {
-            let index = this.permissionsSelected.findIndex((e) =>
-                e.hasOwnProperty(model)
+            let index = this.permissionsSelected.findIndex((item) =>
+                item == `${model}.${wildcard}`
             );
-
-            let itemIndex =
-                this.permissionsSelected[index][model].indexOf(wildcard);
-            if (itemIndex != -1) {
-                this.permissionsSelected[index][model].splice(itemIndex, 1);
-            }
+            this.permissionsSelected.splice(index,1)
         },
         unassignPermission(info) {
-            const modelName = Object.keys(info.value)[0];
-            let index = this.permissionsSelected.findIndex((e) =>
-                e.hasOwnProperty(modelName)
-            );
-            if (index != -1) {
-                this.permissionsSelected.splice(index, 1);
-            }
+            const modelName = info.value
+            this.permissionsSelected = this.permissionsSelected.filter(function (permission) {
+                return !permission.includes(modelName)
+            })
         },
     },
 };

@@ -112,6 +112,14 @@ class PermissionController extends Controller
         return Redirect::route('permissions.index');
     }
 
+    /**
+     * It takes a list of permissions, and assigns them to a user
+     * 
+     * @param AssignPermissionsRequest request The request object
+     * @param User user The user object that is being assigned permissions to.
+     * 
+     * @return A redirect to the users.index route.
+     */
     public function assignPermissions(AssignPermissionsRequest $request, User $user)
     {
         $permissionsAssigned = $this->permissionRepository->assignPermissions($request->validated()['permissionList'], $user);

@@ -129,7 +129,7 @@ class UserController extends Controller
     {
         return Inertia::render('Users/AssignPermissions', [
             'user' => $user,
-            'permissions' => $this->permissionRepository->browsePermissionByWildcard()
+            'permissions' => $this->permissionRepository->browsePermission()
         ]);
     }
 }
