@@ -6,7 +6,6 @@ import BreezeDropdownLink from '@/Components/DropdownLink.vue';
 import BreezeNavLink from '@/Components/NavLink.vue';
 import BreezeResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/inertia-vue3';
-
 const showingNavigationDropdown = ref(false);
 </script>
 
@@ -29,6 +28,42 @@ const showingNavigationDropdown = ref(false);
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <BreezeNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
+                                </BreezeNavLink>
+                            </div>
+
+                            <div v-show="$can('users', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <BreezeNavLink :href="route('users.index')" :active="route().current('users.index')">
+                                    Users
+                                </BreezeNavLink>
+                            </div>
+
+                            <div v-show="$can('permissions', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <BreezeNavLink :href="route('permissions.index')" :active="route().current('permissions.index')">
+                                    Permissions
+                                </BreezeNavLink>
+                            </div>
+
+                            <div v-show="$can('roles', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <BreezeNavLink :href="route('roles.index')" :active="route().current('roles.index')">
+                                    Roles
+                                </BreezeNavLink>
+                            </div>
+                            
+                            <div v-show="$can('books', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <BreezeNavLink :href="route('books.index')" :active="route().current('books.index')">
+                                    Books
+                                </BreezeNavLink>
+                            </div>
+
+                            <div v-show="$can('movies', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <BreezeNavLink :href="route('movies.index')" :active="route().current('movies.index')">
+                                    Movies
+                                </BreezeNavLink>
+                            </div>
+
+                            <div v-show="$can('series', 'viewAny')" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <BreezeNavLink :href="route('series.index')" :active="route().current('series.index')">
+                                    Series
                                 </BreezeNavLink>
                             </div>
                         </div>
@@ -107,4 +142,8 @@ const showingNavigationDropdown = ref(false);
             </main>
         </div>
     </div>
-</template>
+</template><script>
+    export default {
+    };
+</script>
+

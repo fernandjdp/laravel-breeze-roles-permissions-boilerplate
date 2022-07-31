@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('make:permission', function () {
+    Artisan::call('db:seed --class=PermissionsSeeder');
+    $this->info("Permissions created successfully");
+})->purpose('Make permissions from the models in app/models');
+
+Artisan::command('make:admin', function () {
+    Artisan::call('db:seed --class=AdminSeeder');
+    $this->info("Admin user created successfully");
+})->purpose('Create an Admin user for testing/debug purposes');
